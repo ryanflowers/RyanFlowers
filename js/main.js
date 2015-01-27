@@ -1,3 +1,0 @@
-alert('hello world in TypeScript 1!');
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC90ZXN0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLEtBQUssQ0FBQyw4QkFBOEIsQ0FBQyxDQUFDIiwiZmlsZSI6Im1haW4uanMiLCJzb3VyY2VzQ29udGVudCI6WyJhbGVydCgnaGVsbG8gd29ybGQgaW4gVHlwZVNjcmlwdCAxIScpOyJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==

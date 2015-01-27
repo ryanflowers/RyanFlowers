@@ -1,32 +1,73 @@
 "use strict";
 
 var gulp = require('gulp');
-var ts = require('gulp-typescript');
+var typescript = require('gulp-tsc');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 
-var tsProject = ts.createProject({
+var tsProject = {
     declarationFiles: true,
-    noExternalResolve: true,
+    noExternalResolve: false,
     removeComments: true,
-    target: 'ES6',
+    keepTree: true,
     module: 'amd',
     noImplicitAny: true,
-    sortOutput: true,
-    sourceRoot: 'app/'
-});
+    sortOutput: true
+};
 
 gulp.task('scripts', function () {
-    var tsResult = gulp.src('app/*.ts')
+    var tsResult = gulp.src(['app/*.ts', 'app/modules/*.d.ts'])
         .pipe(sourcemaps.init())
-        .pipe(ts(tsProject));
+        .pipe(typescript(tsProject));
 
-    return tsResult.js
-        .pipe(concat('main.js'))
+    return tsResult
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('js'));
 });
 
 gulp.task('watch', ['scripts'], function () {
-    gulp.watch('app/*.ts', ['scripts']);
+    gulp.watch(['app/*.ts', 'app/modules/*.d.ts'], ['scripts']);
 });
+
+
+
+
+
+
+
+
+
+
+//"use strict";
+//
+//var gulp = require('gulp');
+//var ts = require('gulp-typescript');
+//var sourcemaps = require('gulp-sourcemaps');
+//var concat = require('gulp-concat');
+//
+//var tsProject = ts.createProject({
+//    declarationFiles: true,
+//    noExternalResolve: false,
+//    removeComments: true,
+//    target: 'ES6',
+//    keepTree: true,
+//    module: 'amd',
+//    noImplicitAny: true,
+//    sortOutput: true,
+//    sourceRoot: 'app/'
+//});
+//
+//gulp.task('scripts', function () {
+//    var tsResult = gulp.src(['app/*.ts', 'app/modules/*.d.ts'])
+//        .pipe(sourcemaps.init())
+//        .pipe(ts(tsProject));
+//
+//    return tsResult.js
+//        //.pipe(concat('AppConfig.js'))
+//        .pipe(sourcemaps.write())
+//        .pipe(gulp.dest('js'));
+//});
+//
+//gulp.task('watch', ['scripts'], function () {
+//    gulp.watch(['app/*.ts', 'app/modules/*.d.ts'], ['scripts']);
+//});
