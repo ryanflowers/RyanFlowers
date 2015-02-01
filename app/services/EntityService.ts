@@ -1,4 +1,4 @@
-import Message = require("classes/Message");
+import Message = require("../viewModels/MessageViewModel");
 
 class EntityService {
     private _message: Message;
