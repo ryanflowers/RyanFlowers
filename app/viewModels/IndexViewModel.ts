@@ -1,14 +1,22 @@
-import Message =
+import IHeader = require("../interfaces/IHeader");
 class IndexViewModel {
-    private _message: Message;
+    private _header: any;
 
-    constructor (title: any) {
-        this._message = new Message('test');
+    public get Header(): any {
+        return this._header;
     }
 
-    public getMessage(): Message {
-        return this._message;
+    public set Header(value: any){
+        this._header.title(value.title);
     }
+
+    constructor (header: IHeader) {
+        this._header = {
+            title: ko.observable(header.title)
+        };
+    }
+
+
 }
 
-export = EntityService;
+export = IndexViewModel;

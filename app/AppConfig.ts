@@ -1,8 +1,6 @@
-/// <reference path="modules/require.d.ts" />
-/// <reference path="AppMain.ts" />
-
+/// <reference path="AppMain"/>
+//test
 require.config({
-    //baseUrl: '../' // commented for now
 });
 
 require(['AppMain'],
@@ -10,3 +8,4 @@ require(['AppMain'],
         var appMain = new Main();
         appMain.run();
     });
+

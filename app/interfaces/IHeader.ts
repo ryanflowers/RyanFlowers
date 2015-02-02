@@ -1,5 +1,5 @@
-interface IMessage {
-    textValue:string;
+interface IHeader {
+    title:string;
 }
 
-export = IMessage;
+export = IHeader;

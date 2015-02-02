@@ -1,14 +1,17 @@
-import Message = require("../viewModels/MessageViewModel");
+import IHeader = require("../interfaces/IHeader");
 
 class EntityService {
-    private _message: Message;
+    private database: Firebase; //TODO: use a provider for this containing singleton for all injected in.
 
     constructor () {
-        this._message = new Message('test');
+        this.database = new Firebase('https://ryanflowersindex.firebaseio.com');
     }
 
-    public getMessage(): Message {
-        return this._message;
+    public onIndexHeader(handler: (header: IHeader) => void): void {
+        var index = <any>this.database.child('index');
+        index.on('value', function (index: any) {
+            handler(<IHeader>index.val().header);
+        });
     }
 }
 

@@ -31,7 +31,7 @@
         <div id="headline">
             <div class="container">
                 <header>
-                    <h1>Mobile Web Development</h1>
+                    <h1 data-bind="text: Header.title">Mobile Web Development</h1>
                     <p>Building Mobile Web Experiences</p>
                 </header>
                 <div id="blurb">
@@ -178,7 +178,8 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
-        <script data-main="js/AppConfig" type="text/javascript" src="bower_components/requirejs/require.js"></script>
+        <script src="bower_components/knockout/dist/knockout.debug.js"></script>
+        <script data-main="js/app/AppConfig" type="text/javascript" src="bower_components/requirejs/require.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -190,20 +191,20 @@
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>
         <script>
-            var lblResult = document.getElementById('lblResult'),
-                inputValue = document.getElementById('inputValue'),
-                submitInput = document.getElementById('submitInput'),
-                    rootRef = new Firebase('https://ryanflowers.firebaseio.com'),
-                    projects = rootRef.child('currentProject');
+//            var lblResult = document.getElementById('lblResult'),
+//                inputValue = document.getElementById('inputValue'),
+//                submitInput = document.getElementById('submitInput'),
+//                    rootRef = new Firebase('https://ryanflowers.firebaseio.com'),
+//                    projects = rootRef.child('currentProject');
 
-            submitInput.addEventListener('click', function() {
-                projects.set(inputValue.value);
-                inputValue.value = '';
-            });
+//            submitInput.addEventListener('click', function() {
+//                projects.set(inputValue.value);
+//                inputValue.value = '';
+//            });
 
-            projects.on('value', function(project){
-                lblResult.innerText = project.val();
-            });
+//            projects.on('value', function(project){
+//                lblResult.innerText = project.val();
+//            });
 
         </script>
     </body>

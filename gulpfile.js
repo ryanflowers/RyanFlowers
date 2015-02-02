@@ -1,73 +1,47 @@
 "use strict";
 
 var gulp = require('gulp');
-var typescript = require('gulp-tsc');
+var tsc = require('gulp-tsc');
+//var tsc = require('gulp-typescript'); //This one actually displays errors unlike gulp-tsc
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
+var debug = require('gulp-debug');
+var del = require('del');
+var seq = require('run-sequence');
+var gutil = require('gulp-util');
 
-var tsProject = {
+var tsOptions = {
     declarationFiles: true,
     noExternalResolve: false,
     removeComments: true,
     keepTree: true,
     module: 'amd',
     noImplicitAny: true,
-    sortOutput: true
+    sortOutput: true,
+    target: 'ES6'
 };
 
-gulp.task('scripts', function () {
+gulp.task('clean', function (cb) {
+    del('js/app/*', cb);
+});
+
+gulp.task('rebuild', function (cb) {
+    seq('clean', 'build', cb);
+});
+
+gulp.task('build', function () {
     var tsResult = gulp.src(['app/*.ts', 'app/modules/*.d.ts'])
         .pipe(sourcemaps.init())
-        .pipe(typescript(tsProject));
+        .pipe(debug({title: 'sources:'}))
+        .pipe(tsc(tsOptions));
 
     return tsResult
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('js'));
+        .pipe(debug({title: 'results:'}))
+        .pipe(gulp.dest('js/app'));
 });
 
-gulp.task('watch', ['scripts'], function () {
-    gulp.watch(['app/*.ts', 'app/modules/*.d.ts'], ['scripts']);
+gulp.task('watch', ['build'], function () {
+    gulp.watch(['app/*.ts', 'app/modules/*.d.ts'], ['build']);
 });
 
-
-
-
-
-
-
-
-
-
-//"use strict";
-//
-//var gulp = require('gulp');
-//var ts = require('gulp-typescript');
-//var sourcemaps = require('gulp-sourcemaps');
-//var concat = require('gulp-concat');
-//
-//var tsProject = ts.createProject({
-//    declarationFiles: true,
-//    noExternalResolve: false,
-//    removeComments: true,
-//    target: 'ES6',
-//    keepTree: true,
-//    module: 'amd',
-//    noImplicitAny: true,
-//    sortOutput: true,
-//    sourceRoot: 'app/'
-//});
-//
-//gulp.task('scripts', function () {
-//    var tsResult = gulp.src(['app/*.ts', 'app/modules/*.d.ts'])
-//        .pipe(sourcemaps.init())
-//        .pipe(ts(tsProject));
-//
-//    return tsResult.js
-//        //.pipe(concat('AppConfig.js'))
-//        .pipe(sourcemaps.write())
-//        .pipe(gulp.dest('js'));
-//});
-//
-//gulp.task('watch', ['scripts'], function () {
-//    gulp.watch(['app/*.ts', 'app/modules/*.d.ts'], ['scripts']);
-//});

@@ -1225,7 +1225,7 @@ interface JQuery {
     /**
      * Adds the specified class(es) to each of the set of matched elements.
      *
-     * @param className One or more space-separated classes to be added to the class attribute of each matched element.
+     * @param className One or more space-separated services to be added to the class attribute of each matched element.
      */
     addClass(className: string): JQuery;
     /**
@@ -1331,13 +1331,13 @@ interface JQuery {
     removeAttr(attributeName: string): JQuery;
 
     /**
-     * Remove a single class, multiple classes, or all classes from each element in the set of matched elements.
+     * Remove a single class, multiple services, or all services from each element in the set of matched elements.
      *
-     * @param className One or more space-separated classes to be removed from the class attribute of each matched element.
+     * @param className One or more space-separated services to be removed from the class attribute of each matched element.
      */
     removeClass(className?: string): JQuery;
     /**
-     * Remove a single class, multiple classes, or all classes from each element in the set of matched elements.
+     * Remove a single class, multiple services, or all services from each element in the set of matched elements.
      *
      * @param function A function returning one or more space-separated class names to be removed. Receives the index position of the element in the set and the old class value as arguments.
      */
@@ -1351,20 +1351,20 @@ interface JQuery {
     removeProp(propertyName: string): JQuery;
 
     /**
-     * Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.
+     * Add or remove one or more services from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.
      *
      * @param className One or more class names (separated by spaces) to be toggled for each element in the matched set.
      * @param swtch A Boolean (not just truthy/falsy) value to determine whether the class should be added or removed.
      */
     toggleClass(className: string, swtch?: boolean): JQuery;
     /**
-     * Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.
+     * Add or remove one or more services from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.
      *
      * @param swtch A boolean value to determine whether the class should be added or removed.
      */
     toggleClass(swtch?: boolean): JQuery;
     /**
-     * Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.
+     * Add or remove one or more services from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.
      *
      * @param func A function that returns class names to be toggled in the class attribute of each element in the matched set. Receives the index position of the element in the set, the old class value, and the switch as arguments.
      * @param swtch A boolean value to determine whether the class should be added or removed.
